@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://courses.cs.washington.edu/courses/cse442/18au/a2-template.html -->
+<html xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CSE442 Assignment 2</title>
+  <style>
+* { padding: 0; margin: 0; }
+
+body {
+  margin: 0 auto 0 auto;
+  padding: 0;
+  background-color: #33333f;
+  width: 840px;
+  font-family: "Avenir", "Avenir Next", Helvetica Neue, Arial;
+  font-size: 0.95em;
+}
+
+a, a:visited { text-decoration: none; color: #7533f4; }
+a:hover { text-decoration: underline; color: #f4b014; }
+img, a.img, a:hover.img { border: none; }
+
+img {
+  max-width: 800px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #492a7c;
+  background-color: inherit;
+  font-weight: normal;
+  padding: 0 0 5px 0;
+  margin: 15px 0 0 0;
+  border: none;
+  clear: right;
+}
+h1 { font-size: 18pt; margin:  5px 0 10px 0; line-height: 28px; }
+h2 { font-size: 14pt; margin: 30px 0 15px 0; letter-spacing: 0.01em; border-bottom: 1px solid #ccc;  line-height: 20px;}
+h3 { font-size: 13pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 11pt; }
+p { margin: 0 0 10px 0; }
+hr { border: 0px; border-top: 1px solid #ccc; height: 0px; }
+ol { margin: 1em; }
+
+.content {
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #ffffff;
+}
+
+.article {
+  line-height: 1.5em;
+}
+
+.entry  {
+  border-top: 1px solid #ddd;
+  padding-top: 2px;
+  margin-top: 3em;
+}
+  </style>
+</head>
+
+<body>
+<div class="content">
+
+<section>
+  <h1>Assignment 2: Exploratory Data Analysis</h1>
+
+  <p>
+    <strong>Alex Smintina</strong> —
+    <em>edsmint@uw.edu</em>
+  </p>
+</section>
+
+<section>
+  <h2>Dataset</h2>
+
+  <p>
+    NFL Elo ratings, probabilities, and scores for every game in the NFL regular season from 1920 to 2018.<br>
+    This dataset was produced by FiveThirtyEight’s NFL coverage team in order to provide a more concrete understanding of who the best teams in the NFL are. The FiveThirtyEight team used the Elo rating system developed by Hungarian-American physicist Arpad Elo and applied it to rating NFL teams according to the final score and location of each game played. I am interested in this data because I have been an NFL fan my entire life and am excited about analyzing how the Elo rating along with other NFL metrics relate to the outcomes of an NFL season. 
+  </p>
+
+  <p>
+    The data is available online at:
+    <strong>
+      <a href="https://github.com/fivethirtyeight/data/blob/master/nfl-elo/README.md">NFL Elo</a>
+    </strong>
+  </p>
+</section>
+
+<section>
+  <h2>Initial Analysis Questions</h2>
+  <ol>
+    <li>Who are the best underdog or “Cinderella story” teams in the NFL?</li>
+    <li>Which team had the bad luck of having the hardest schedule in the 2017 season?</li>
+    <li>Which team was the most improved in the 2017 season?</li>
+    <li>Is offense or defense more important for winning games in the NFL?</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Discoveries &amp; Insights</h2>
+  <p>
+	After looking closely at the dataset at my disposal, I decided to narrow it down for a few reasons. Firstly, the questions that I am eager to answer with this dataset are relevant to today’s NFL and for that reason, I am more interested in recent data rather than games played in 1920 where the rules were completely different and I couldn’t name a single player. Additionally, many teams in the NFL have changed locations over the years so the 2 or 3 letter abbreviation representing the team could be different for the same franchise. Therefore, in order to keep things simple and answer my questions in a relevant manner, I narrowed the data down to the 2017 NFL season.
+  </p>
+  <div class="entry">
+    <img src="Number of Underdog Wins by Month.png">
+    <p class="caption">
+    In order to begin assessing any underdog data, I decided to first visualize the number of underdog wins in the 2017 season and categorize them by month. I calculated underdog wins by only selecting games in which the team that won had an elo_probability of less than 0.5 to win the game. The graph above showed that there were a significant amount of underdog wins and that there is potential for further analysis to be made regarding underdog wins in the NFL. 
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="HomeAwayUnderdogs.png">
+    <p class="caption">
+    After establishing that there were many underdog wins in 2017, I decided to compare how many of the underdog wins came from a team playing at home versus a team playing on the road. The pie chart above indicates that away underdog wins were more frequent than home underdog wins by a factor of about 2.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="UpsetAlert.png">
+    <p class="caption">
+    Digging deeper into the data about underdog wins, I decided to address the question of which NFL team was the most dangerous underdog. Specifically, I took the 8 teams with the most underdog wins (all had 4 or more) and calculated the average Elo of the opponent that they beat in the underdog win. The graph above is sorted to highlight the teams that upset the strongest opponents according to their elo rating before the matchup.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="Underdogs Wins and Percentages.png">
+    <p class="caption">
+    Finally, I took the same 8 teams with the most underdog victories and generated a scatter plot that indicates the relationship between the number of underdog wins and the average percentage that the underdog team had of winning each respective game. This chart is meant to underline which teams were able to win games when the odds were most against them. These teams can be found lower on the chart while the teams that allocated the highest quantity of underdog wins are found on the rightmost end of the chart. 
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="Difficulty of Schedule.png">
+    <p class="caption">
+    Shifting gears to my second investigative question, I derived a bar chart that displays the overall difficulty of schedule for each team in the 2017 season. I calculated difficulty of schedule by combining the elo rating of every opponent that a team played against. The teams with the highest opposing elo had to play the strongest teams.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="Most Improved Team.png">
+    <p class="caption">
+    To address my third investigative question, I once more used the elo ratings of each team to compute which teams improved the most from the beginning of the year to the end. The bar chart above shows the difference in elo rating from week 1 of the season to week 15. 
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="Wins vs. Point Differential.png">
+    <p class="caption">
+    Finally to answer my final investigative question, I focused on the relationship between the number of points that each team scored and allowed in each game and the number of wins that the team collected during the season. The scatter plot above exhibits the number of wins that each team had along with the overall point differential that they earned throughout the season. The teams below the trend line of best fit had a smaller point differential for an average team with that amount of wins while teams above the trend line had a higher point differential than an average team with that respective amount of wins. Essentially, teams below the line most likely won games by small margins and/or lost by big margins while teams above the line won games by bigger margins and/or lost games by smaller margins.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="Offensive Scoring vs. Wins.png">
+    <p class="caption">
+    The graph above is crafted in the same way as the point differential graph except for it uses the total points that each team has scored throughout the entire season. This the trend line demonstrates that there is a significant correlation between total points scored and total wins. 
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="Defensive Scoring vs. Wins.png">
+    <p class="caption">
+    Along the same lines, this chart visualizes how the total number of points that a team allows relates to the number of wins that a team allocates. As indicated by the trend line, there is a clear correlation between less points allowed and more wins. But does defense have a stronger correlation with winning than offense?
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="Correlation.png">
+    <p class="caption">
+    This final bar graph looks closer at the three previous graphs to derive a conclusion for what statistic is most important when it comes to winning in the NFL. The correlation coefficient of each graph was taken for point differential, points scored, and points allowed with respect to wins. Evidently, point differential has the strongest correlation followed by offense and then defense. It may be true that defense wins championships, but according to this dataset, offense and point differential wins more regular season games.
+    </p>
+  </div>
+
+  <div class="entry">
+    <h3>Summary</h3>
+    <p>
+    Assessing the overall structure of this dataset and drilling deeper into more specific details allowed me to make new discoveries and answer my initial analysis questions. Firstly, the graph titled “Which Team Upset the Strongest Opponents” clearly indicates that the Carolina Panthers, Minnesota Vikings, and Philadelphia Eagles upset teams with a significantly higher Elo than the other 5 on average. However, the next graph titled “Underdog Wins and Percentages” demonstrates that these three teams had the highest average probability of winning their underdog games. In other words, their opponents may have been strong, but these three teams were also strong enough to not be counted out. The “Underdog Wins and Percentages” chart highlighted that the Chicago Bears were often the heavy underdogs and still managed to collect four upset victories while the Los Angeles Rams had the highest quantity of upsets, but were not necessarily heavy underdogs for most of the games. 	The Difficulty of Schedule graph effectively answered my question of who had the toughest schedule: the Atlanta Falcons followed by the Chicago Bears and a few other teams within that range. My third question was also answered clearly by the graph titled “Most Improved Team” as the Jacksonville Jaguars and Los Angeles Rams were the frontrunners with an Elo boost of over 165 throughout the course of the season. Seeing this statistic was not very surprising as a football fan because I recall counting these two teams out of the playoffs early last year and was surprised by how well they played and that they both were able to make the playoffs.
+	Finally, the last four visualizations of the report satisfied my inquiry for what statistic is most important for winning regular season games. Comparing the three correlation coefficients of point differential, points scored, and points allowed in relation to wins made it clear that point differential had the strongest correlation of 0.826, followed by points scored with 0.704, and then points allowed with 0.629. Graphing these three attributes with respect to wins also pointed out a few interesting outliers. For instance, the Chicago Bears had a very strong defense and only allowed 320 points and won 5 games leaving 15 other teams with weaker defenses (allowed more points) but with more wins. On the other hand, the Buffalo Bills had an exceptionally weak offense, scoring only about 300 points while collecting 9 wins and making the playoffs. The outliers on these graphs are interesting to point out because they had a memorable 2017 season overall. 
+	With the Elo rating, scores, and locations of each game in a season there are many stories that can be told through data visualizations. Something that would be interesting to do in the future is to map the trajectories of teams Elo over time to try and predict the next breakout teams like the Rams and the Jaguars in 2017.
+    </p>
+  </div>
+</section>
+
+</div>
+
+
+</body></html>
